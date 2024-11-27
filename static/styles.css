@@ -1,0 +1,151 @@
+/* Reset default browser margin and padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body Styling */
+body {
+    font-family: Segoe UI;
+    background-color: #5e7a80;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    overflow: hidden; /* Prevent scrolling on the whole page */
+}
+
+/* Header Styling */
+header {
+    background-color: #4898b1;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    flex-shrink: 0; /* Prevent header from shrinking */
+}
+
+/* Main Wrapper */
+.main-wrapper {
+    display: flex;
+    align-self: center;
+    max-width: 1800px;
+    flex: 1; /* Take up remaining space after the header */
+    justify-content: space-between;
+    padding: 20px;
+    overflow: hidden; /* Prevent scrolling on the wrapper */
+    height: calc(100vh - 80px); /* Account for header height */
+}
+
+/* Left and Right Main Sections */
+.main-left, .main-right {
+    flex: 1;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    height: 100%; /* Ensure sections take up full height of main wrapper */
+    overflow: hidden; /* Prevent overflow on these sections */
+}
+
+/* Background colors for visibility */
+.main-left {
+    background-color: #ffffff00;
+}
+
+.main-right {
+    background-color: #ffffff00;
+}
+
+/* Main Containers for Content */
+.main-container-left, .main-container-right {
+    display: flex;
+    flex-direction: column; /* Correct layout for stacked content */
+    width: 100%;
+    background-color: #ecf0f1;
+    padding: 20px;
+    border-radius: 5px;
+    overflow: auto; /* Prevent scrolling */
+    height: 100%;
+    gap: 20px; /* Add consistent spacing between child elements */
+}
+
+/* Flexible height for display containers */
+.display-container {
+    flex: 1; /* Allow display containers to grow proportionally */
+    min-height: 200px; /* Ensure a consistent minimum height for displays boxes */
+    background-color: #add2db;
+    position: relative;
+}
+
+/* Styling for the new polygon display box */
+#polygon-display {
+    background-color: #7f8c8d; /* Light gray for contrast */
+    margin-bottom: 0; /* Avoid double-spacing due to gap */
+    padding: 10px;
+    color: white;
+}
+
+/* Label Styling */
+.label {
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+/* Button Container */
+.button-container {
+    display: flex;
+    flex-wrap: wrap; /* Allow buttons to wrap */
+    gap: 10px;
+}
+
+/* Ensure consistent spacing in buttons */
+button {
+    padding: 10px 20px;
+    border: none;
+    background-color: #2980b9;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+    flex-grow: 1; /* Buttons take equal space in each row */
+}
+
+button:hover {
+    background-color: #3498db;
+}
+
+/* Text Area Styling */
+textarea {
+    width: 100%;
+    min-height: 100px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    resize: none;
+}
+
+/* Ensure the map takes full space of the display container */
+#map {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+
+/* Responsive Design for Small Screens */
+@media (max-width: 768px) {
+    .main-wrapper {
+        flex-direction: column;
+    }
+    .main-left, .main-right {
+        flex: none;
+        width: 100%;
+        margin-bottom: 20px;
+    }
+}
+
+iframe {
+    width: 100%;
+    height: 100%;
+    min-height: 300px;
+    border: none;
+}
