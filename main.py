@@ -4,6 +4,9 @@ import json
 
 app = Flask(__name__)
 
+port = int(os.environ.get("PORT", 5000))  # Default to port 5000 if PORT is not set
+app.run(host="0.0.0.0", port=port, debug=True)
+
 # Define the output directory for server-side saving
 OUTPUT_DIR = os.path.join('assets', 'footprints_output')
 os.makedirs(OUTPUT_DIR, exist_ok=True)
