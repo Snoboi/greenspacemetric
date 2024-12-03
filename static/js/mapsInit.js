@@ -4,12 +4,11 @@ window.onload = function () {
 
     // Initialize the main map (area selection)
     map = L.map('map').setView([51.505, -0.09], 13);
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; OpenStreetMap contributors'
-    }).addTo(map);
-
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+    
     // Search bar functionality
     const searchBar = document.getElementById('search-bar');
+    searchBar.value = "london uk"; // Prefill with "London UK"
     searchBar.addEventListener('keydown', function (event) {
         if (event.key === 'Enter') {
             const query = searchBar.value.trim();
@@ -63,17 +62,8 @@ window.onload = function () {
             circle: false,
             marker: false,
             polyline: false,
-            rectangle: {
-                shapeOptions: {
-                    color: '#007bff', // Blue border for the rectangle
-                    weight: 3,
-                    fillOpacity: 0.1 // Slight transparency for fill
-                }
-            }
+            rectangle: {shapeOptions: {color: '#007bff', weight: 3, fillOpacity: 0.1}}
         },
-        edit: {
-            featureGroup: drawnItems
-        }
     });
     map.addControl(drawControl);
 

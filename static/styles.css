@@ -5,9 +5,14 @@
     box-sizing: border-box;
 }
 
+/* Ensure height propagation throughout the document */
+html, body {
+    height: 100%;
+}
+
 /* Body Styling */
 body {
-    font-family: Segoe UI;
+    font-family: Segoe UI, Arial, sans-serif;
     background-color: #5e7a80;
     color: #333;
     display: flex;
@@ -60,36 +65,87 @@ header {
 /* Main Containers for Content */
 .main-container-left, .main-container-right {
     display: flex;
-    flex-direction: column; /* Correct layout for stacked content */
+    flex-direction: column;
     width: 100%;
     background-color: #ecf0f1;
     padding: 20px;
-    border-radius: 5px;
-    overflow: auto; /* Prevent scrolling */
-    height: 100%;
+    overflow: auto;
+    height: 100%; /* Take up the full height of the parent */
     gap: 20px; /* Add consistent spacing between child elements */
-}
-
-/* Flexible height for display containers */
-.display-container {
-    flex: 1; /* Allow display containers to grow proportionally */
-    min-height: 200px; /* Ensure a consistent minimum height for displays boxes */
-    background-color: #add2db;
-    position: relative;
-}
-
-/* Styling for the new polygon display box */
-#polygon-display {
-    background-color: #7f8c8d; /* Light gray for contrast */
-    margin-bottom: 0; /* Avoid double-spacing due to gap */
-    padding: 10px;
-    color: white;
+    border-radius: 10px;
 }
 
 /* Label Styling */
 .label {
     font-weight: bold;
     color: #2c3e50;
+}
+
+/* Flexible height for display containers */
+.display-container {
+    flex: 1; /* Distribute available space equally */
+    min-height: 200px; /* Maintain a minimum height */
+    background-color: #add2db;
+    position: relative;
+    overflow: auto;
+}
+
+/* Specific height for the map-container to ensure proper layout */
+.map-container {
+    position: relative;
+    width: 100%;
+    height: 100%; /* Ensure the map fills its container */
+    border-style: solid;
+    border-color: #2ca3bb;
+    border-width: 1px;
+}
+
+/* Adjust the map display inside the container */
+#map {
+    width: 100%;
+    height: 100%; /* Map takes up the full height of its container */
+    position: absolute;
+}
+
+/* Map overlay styling */
+.map-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Overlay is non-interactive */
+    z-index: 999; /* Ensure it stays above the map */
+}
+
+/* Styling for the Polygon Display Box */
+.polygon-container {
+    position: relative;
+    width: 100%;
+    flex: 1; /* Distribute space equally */
+    height: 100%; /* Match parent container height */
+    border-style: solid;
+    border-color: #2ca3bb;
+    border-width: 1px;
+}
+
+#polygon-display {
+    position: relative;
+    width: 100%;
+    height: 100%; /* Ensure it fills its container */
+    background-color: #7f8c8d; /* Light gray for contrast */
+    padding: 10px;
+    color: white;
+}
+
+.polygon-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 999;
 }
 
 /* Button Container */
@@ -103,49 +159,35 @@ header {
 button {
     padding: 10px 20px;
     border: none;
+    border-radius: 5px;
     background-color: #2980b9;
     color: white;
     cursor: pointer;
-    border-radius: 5px;
     flex-grow: 1; /* Buttons take equal space in each row */
+}
+
+/* Text Area Styling */
+textarea {
+    width: 100%;
+    min-height: 50px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    resize: none;
 }
 
 button:hover {
     background-color: #3498db;
 }
 
-/* Text Area Styling */
-textarea {
-    width: 100%;
-    min-height: 100px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    resize: none;
-}
-
-/* Ensure the map takes full space of the display container */
-#map {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-}
-
-/* Responsive Design for Small Screens */
+/* Responsive Design */
 @media (max-width: 768px) {
     .main-wrapper {
         flex-direction: column;
     }
+
     .main-left, .main-right {
         flex: none;
         width: 100%;
         margin-bottom: 20px;
     }
-}
-
-iframe {
-    width: 100%;
-    height: 100%;
-    min-height: 300px;
-    border: none;
 }
