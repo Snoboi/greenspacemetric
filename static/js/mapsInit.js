@@ -8,7 +8,6 @@ window.onload = function () {
     
     // Search bar functionality
     const searchBar = document.getElementById('search-bar');
-    searchBar.value = "london uk"; // Prefill with "London UK"
     searchBar.addEventListener('keydown', function (event) {
         if (event.key === 'Enter') {
             const query = searchBar.value.trim();
